@@ -12,12 +12,12 @@
         if($conn->query($qdaftar)===TRUE) {
             $conn->close();
             header("location:index.php");
-            exit();
+            exit;
         }
         else {
             echo"Error:".$sql."<br>".$conn->error;
             $conn->close();
-            exit();
+            exit;
         }
     }
 ?>
