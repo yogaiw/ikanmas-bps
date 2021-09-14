@@ -14,7 +14,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id-id">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,6 +27,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand">
             <!-- Navbar Brand-->
@@ -34,12 +35,9 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
+            <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                
+            </div>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
@@ -74,10 +72,8 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
+                        <h1 class="mt-4 mb-4">Dashboard</h1>
+                        
                         <!-- <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
@@ -131,10 +127,26 @@
                                             <div class="form-group mb-3">
                                                 <input type="text" class="form-control"  placeholder="<?= $currentUser['nama_pegawai'] ?>" disabled>
                                             </div>
-                                            <div class="form-group mb-3">
-                                                <textarea class="form-control"  placeholder="Keperluan" rows="5" required></textarea>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="tglKeluar" class="form-control" onfocus="(this.type='date')" onmouseout="(this.type='text')" id="date" placeholder="Tanggal Keluar" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" onfocus="(this.type='date')" onmouseout="(this.type='text')" id="date" placeholder="Tanggal Kembali" required>
+                                                </div>
                                             </div>
-                                            <a href="dashboard.php"><button type="submit" name="masuk" class="btn btn-primary d-flex">Kirim</button></a>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" onfocus="(this.type='time')" onmouseout="(this.type='text')" placeholder="Jam Keluar">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" onfocus="(this.type='time')" onmouseout="(this.type='text')" placeholder="Jam Kembali">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                    <textarea class="form-control"  placeholder="Keperluan" rows="5" required></textarea>
+                                            </div>
+                                            <a href=""><button type="submit" name="masuk" class="btn btn-primary d-flex">Kirim</button></a>
                                         </form>
                                     </div>
                                 </div>
@@ -149,22 +161,20 @@
                                         <table id="datatablesSimple">
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
+                                                    <th>No.</th>
+                                                    <th>Keperluan</th>
+                                                    <th>Tanggal keluar</th>
+                                                    <th>Tanggal Kembali</th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
+                                                    <th>No.</th>
+                                                    <th>Keperluan</th>
+                                                    <th>Tanggal keluar</th>
+                                                    <th>Tanggal Kembali</th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
@@ -174,7 +184,6 @@
                                                     <td>Edinburgh</td>
                                                     <td>61</td>
                                                     <td>2011/04/25</td>
-                                                    <td>$320,800</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -205,5 +214,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
     </body>
 </html>
