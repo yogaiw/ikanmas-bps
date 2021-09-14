@@ -11,6 +11,8 @@
     $getCurrentUser = $conn->query("SELECT * FROM pegawai WHERE id_pegawai = ".$_SESSION['current_user']);
     $currentUser = $getCurrentUser->fetch_assoc();
 
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +59,13 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="dashboard.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
+                            </a>
+                            <a class="nav-link" href="" id="admin-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
+                                    Admin
                             </a>
                         </div>
                     </div>
@@ -179,8 +185,8 @@
                                             </tfoot>
                                             <tbody>
                                                 <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
+                                                    <td>1</td>
+                                                    <td>Rapat koordinasi</td>
                                                     <td>Edinburgh</td>
                                                     <td>61</td>
                                                     <td>2011/04/25</td>
@@ -202,6 +208,13 @@
                 </footer>
             </div>
         </div>
+        <?php 
+            if($currentUser["isAdmin"] != 2) {
+                echo "<script type=\"text/javascript\">
+                document.getElementById(\"admin-link\").style.display = \"none\";
+                </script>";
+            }
+        ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
