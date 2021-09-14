@@ -113,7 +113,7 @@
                             </div>
                         </div> -->
                         <div class="row">
-                            <div class="col-xl-6 col-md-12">
+                            <div class="col-xl-4 col-md-12">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-input me-1"></i>
@@ -151,7 +151,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-md-12">
+                            <div class="col-xl-8 col-md-12">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table me-1"></i>
@@ -196,12 +196,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            <div class="text-muted">Copyright &copy; Badan Pusat Statistik Kab. Banyumas</div>
                         </div>
                     </div>
                 </footer>
