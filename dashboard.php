@@ -11,8 +11,33 @@
     $getCurrentUser = $conn->query("SELECT * FROM pegawai WHERE id_pegawai = ".$_SESSION['current_user']);
     $currentUser = $getCurrentUser->fetch_assoc();
 
-    
+    if(isset($_POST['kirim'])) {
+        $tglKeluar = $_POST['tglKeluar'];
+        $tglKembali = $_POST['tglKembali'];
+        $jamKeluar = $_POST['jamKeluar'];
+        $jamKembali = $_POST['jamKembali'];
+        $keperluan = $_POST['keperluan'];
+        $dibuat = $currentUser['id_pegawai'];
 
+        $qKirimIzin = "
+            INSERT INTO izin
+            VALUES (
+                '',
+                '$dibuat',
+                '$tglKeluar',
+                '$jamKeluar',
+                '$tglKembali',
+                '$jamKembali',
+                1,
+                '$keperluan'
+            );
+        ";
+
+        $conn->query($qKirimIzin);
+    }
+
+    $qShowIzinSaya = "SELECT * FROM izin WHERE id_pegawai = ".$_SESSION['current_user'];
+    $showIzinSaya = $conn->query($qShowIzinSaya);
 ?>
 
 <!DOCTYPE html>
@@ -135,24 +160,24 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-6">
-                                                    <input type="text" name="tglKeluar" class="form-control" onfocus="(this.type='date')" onmouseout="(this.type='text')" id="date" placeholder="Tanggal Keluar" required>
+                                                    <input type="text" name="tglKeluar" class="form-control" onfocus="(this.type='date')" id="date" placeholder="Tanggal Keluar" required>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" onfocus="(this.type='date')" onmouseout="(this.type='text')" id="date" placeholder="Tanggal Kembali" required>
+                                                    <input type="text" name="tglKembali" class="form-control" onfocus="(this.type='date')" id="date" placeholder="Tanggal Kembali" required>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" onfocus="(this.type='time')" onmouseout="(this.type='text')" placeholder="Jam Keluar">
+                                                    <input type="text" name="jamKeluar" class="form-control" onfocus="(this.type='time')" placeholder="Jam Keluar">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" onfocus="(this.type='time')" onmouseout="(this.type='text')" placeholder="Jam Kembali">
+                                                    <input type="text" name="jamKembali" class="form-control" onfocus="(this.type='time')" placeholder="Jam Kembali">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-3">
-                                                    <textarea class="form-control"  placeholder="Keperluan" rows="5" required></textarea>
+                                                    <textarea class="form-control" name="keperluan" placeholder="Keperluan" rows="5" required></textarea>
                                             </div>
-                                            <a href=""><button type="submit" name="masuk" class="btn btn-primary d-flex">Kirim</button></a>
+                                            <a href="dashboard.php"><button type="submit" name="kirim" class="btn btn-primary d-flex">Kirim</button></a>
                                         </form>
                                     </div>
                                 </div>
@@ -171,7 +196,7 @@
                                                     <th>Keperluan</th>
                                                     <th>Tanggal keluar</th>
                                                     <th>Tanggal Kembali</th>
-                                                    <th>Status</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
@@ -180,17 +205,21 @@
                                                     <th>Keperluan</th>
                                                     <th>Tanggal keluar</th>
                                                     <th>Tanggal Kembali</th>
-                                                    <th>Status</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Rapat koordinasi</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                </tr>
+                                                <?php 
+                                                    $i = 1;
+                                                    foreach($showIzinSaya as $index=>$value): ?>
+                                                    <tr>
+                                                        <td><?= $i++ ?></td>
+                                                        <td><?= $value['keperluan'] ?></td>
+                                                        <td><?= $value['tanggal_keluar']." ".$value['jam_keluar'] ?></td>
+                                                        <td><?= $value['tanggal_kembali']." ".$value['jam_kembali'] ?></td>
+                                                        <td>PENDING</td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
