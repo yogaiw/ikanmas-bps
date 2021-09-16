@@ -31,7 +31,7 @@
 
 <html>
     <head>
-        <title></title>
+        <title>BPS Kabupaten Banyumas</title>
         <link 
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
@@ -39,7 +39,7 @@
             crossorigin="anonymous">
         <link 
             rel="stylesheet"
-            href="style.css">
+            href="assets/css/style1.css">
         <link rel="stylesheet" src="node_modules/fontawesome/css/all.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        
@@ -48,7 +48,7 @@
         <div class="row">
             <div class="login-form">
                 <div class="d-flex justify-content-center" style="display: block;">
-                    <img src="images/logo-bps.png" alt="" width="300px">
+                    <img src="assets/img/logo-bps.png" alt="" width="300px">
                 </div>
                 <div class="mb-5"></div>
                 <form action="" method="POST">
