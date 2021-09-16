@@ -11,35 +11,17 @@
     $getCurrentUser = $conn->query("SELECT * FROM pegawai WHERE id_pegawai = ".$_SESSION['current_user']);
     $currentUser = $getCurrentUser->fetch_assoc();
 
-    // Proses Input Izin
-    if(isset($_POST['kirim'])) {
-        $tglKeluar = $_POST['tglKeluar'];
-        $tglKembali = $_POST['tglKembali'];
-        $jamKeluar = $_POST['jamKeluar'];
-        $jamKembali = $_POST['jamKembali'];
-        $keperluan = $_POST['keperluan'];
-        $dibuat = $currentUser['id_pegawai'];
-
-        $qKirimIzin = "
-            INSERT INTO izin
-            VALUES (
-                '',
-                '$dibuat',
-                '$tglKeluar',
-                '$jamKeluar',
-                '$tglKembali',
-                '$jamKembali',
-                1,
-                '$keperluan'
-            );
-        ";
-
-        $conn->query($qKirimIzin);
+    if($currentUser['isAdmin'] != 2) {
+        header("Location:dashboard.php");
+        exit;
     }
 
-    // Proses menampilkan daftar izin dari user yang sedang login
-    $qShowIzinSaya = "SELECT * FROM izin WHERE id_pegawai = ".$_SESSION['current_user'];
-    $showIzinSaya = $conn->query($qShowIzinSaya);
+    $showAllIzin = $conn->query(
+        "SELECT * FROM izin
+        LEFT JOIN pegawai
+        ON izin.id_pegawai = pegawai.id_pegawai"
+    );
+
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +73,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="admin.php" id="admin-link">
+                            <a class="nav-link" href="" id="admin-link">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
                                     Admin
                             </a>
@@ -106,7 +88,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4 mb-4">Dashboard</h1>
+                        <h1 class="mt-4 mb-4">Admin</h1>
                         
                         <!-- <div class="row">
                             <div class="col-xl-3 col-md-6">
@@ -147,55 +129,19 @@
                             </div>
                         </div> -->
                         <div class="row">
-                            <div class="col-xl-4 col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-input me-1"></i>
-                                        Input Izin Baru
-                                    </div>
-                                    <div class="card-body">
-                                        <form action="" method="POST">
-                                            <div class="form-group mb-3">
-                                                <input type="text" class="form-control" placeholder="<?= $currentUser['nip'] ?>" disabled>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <input type="text" class="form-control"  placeholder="<?= $currentUser['nama_pegawai'] ?>" disabled>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-6">
-                                                    <input type="text" name="tglKeluar" class="form-control" onfocus="(this.type='date')" id="date" placeholder="Tanggal Keluar" required>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input type="text" name="tglKembali" class="form-control" onfocus="(this.type='date')" id="date" placeholder="Tanggal Kembali" required>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-6">
-                                                    <input type="text" name="jamKeluar" class="form-control" onfocus="(this.type='time')" placeholder="Jam Keluar">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input type="text" name="jamKembali" class="form-control" onfocus="(this.type='time')" placeholder="Jam Kembali">
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                    <textarea class="form-control" name="keperluan" placeholder="Keperluan" rows="5" required></textarea>
-                                            </div>
-                                            <a href="dashboard.php"><button type="submit" name="kirim" class="btn btn-primary d-flex">Kirim</button></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-8 col-md-12">
+                            <div class="col-xl-12 col-md-12">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table me-1"></i>
-                                        Permintaan izin Anda
+                                        Daftar Izin Pegawai
                                     </div>
                                     <div class="card-body">
                                         <table id="datatablesSimple">
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
+                                                    <th>NIP</th>
+                                                    <th>Nama Pegawai</th>
                                                     <th>Keperluan</th>
                                                     <th>Tanggal keluar</th>
                                                     <th>Tanggal Kembali</th>
@@ -205,6 +151,8 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>No.</th>
+                                                    <th>NIP</th>
+                                                    <th>Nama Pegawai</th>
                                                     <th>Keperluan</th>
                                                     <th>Tanggal keluar</th>
                                                     <th>Tanggal Kembali</th>
@@ -214,13 +162,15 @@
                                             <tbody>
                                                 <?php 
                                                     $i = 1;
-                                                    foreach($showIzinSaya as $index=>$value): ?>
+                                                    foreach($showAllIzin as $index => $value): ?>
                                                     <tr>
-                                                        <td><?= $i++ ?></td>
+                                                        <td><?=$i++?></td>
+                                                        <td><?= $value['nip'] ?></td>
+                                                        <td><?= $value['nama_pegawai'] ?></td>
                                                         <td><?= $value['keperluan'] ?></td>
                                                         <td><?= $value['tanggal_keluar']." ".$value['jam_keluar'] ?></td>
                                                         <td><?= $value['tanggal_kembali']." ".$value['jam_kembali'] ?></td>
-                                                        <td>PENDING</td>
+                                                        <td></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
