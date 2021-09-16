@@ -11,7 +11,7 @@
     if(isset($_POST['masuk'])) {
 
         $nip = strtolower(stripslashes($_POST["nip"]));
-		$password = mysqli_real_escape_string($conn, $_POST['nip']);
+		$password = mysqli_real_escape_string($conn, $_POST['password']);
 
 		$cek_login = $conn->query("SELECT * FROM pegawai WHERE nip = '$nip'");
 		$ktm_login = $cek_login->num_rows;
@@ -42,7 +42,7 @@
             href="assets/css/style1.css">
         <link rel="stylesheet" src="node_modules/fontawesome/css/all.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
+    
     </head>
     <body>
         <div class="row">
@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <input type="password" class="form-control" name="password" placeholder="Password" required>
                     </div>
-                    <a href="dashboard.php"><button type="submit" name="masuk" class="btn btn-primary d-flex">Masuk</button></a>
+                    <a href="dashboard.php"><button type="submit" name="masuk" class="btn btn-primary btn-block">Masuk</button></a>
                 </form>
             </div>
         </div>
