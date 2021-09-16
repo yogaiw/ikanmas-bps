@@ -8,16 +8,21 @@
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $qdaftar = "INSERT INTO pegawai VALUES('', '$nip','$hashed_password', '" .$_POST['nama']. "',1)";
+        $isExist = $conn->query("SELECT nip FROM pegawai WHERE nip = '$nip'")->fetch_assoc();
 
-        if($conn->query($qdaftar)===TRUE) {
-            $conn->close();
-            header("location:index.php");
-            exit;
-        }
-        else {
-            echo"Error:".$sql."<br>".$conn->error;
-            $conn->close();
-            exit;
+        if($isExist) {
+            echo "<script>alert('User sudah ada')</script>";
+        } else {
+            if($conn->query($qdaftar)===TRUE) {
+                $conn->close();
+                header("location:index.php");
+                exit;
+            }
+            else {
+                echo"Error:".$sql."<br>".$conn->error;
+                $conn->close();
+                exit;
+            }
         }
     }
 ?>
