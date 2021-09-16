@@ -53,15 +53,11 @@
                 <div class="mb-4"></div>
                 <!-- End of Logo -->
 
-                <!-- Judul & Alert -->
+                <!-- Judul -->
                 <div class="text-center mb-4">
                     <h4>Registrasi Pegawai</h4>
                 </div>
-
-                <div class="alert alert-success" role="alert">
-                    This is a danger alert—check it out!
-                </div>
-                <!-- End of Judul & Alert -->
+                <!-- End of Judul -->
 
                 <!-- Form Pendaftaran -->
                 <form action="" method="POST">

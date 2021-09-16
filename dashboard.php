@@ -3,7 +3,7 @@
     session_start();
     require "koneksi.php";
 
-    if(!isset($_SESSION["login"])) {
+    if(!isset($_SESSION["login"])) { // Jika user belum login maka tidak bisa mengakses halaman ini
         header("Location:index.php");
         exit();
     }
@@ -11,6 +11,7 @@
     $getCurrentUser = $conn->query("SELECT * FROM pegawai WHERE id_pegawai = ".$_SESSION['current_user']);
     $currentUser = $getCurrentUser->fetch_assoc();
 
+    // Proses Input Izin
     if(isset($_POST['kirim'])) {
         $tglKeluar = $_POST['tglKeluar'];
         $tglKembali = $_POST['tglKembali'];
@@ -36,6 +37,7 @@
         $conn->query($qKirimIzin);
     }
 
+    // Proses menampilkan daftar izin dari user yang sedang login
     $qShowIzinSaya = "SELECT * FROM izin WHERE id_pegawai = ".$_SESSION['current_user'];
     $showIzinSaya = $conn->query($qShowIzinSaya);
 ?>
@@ -78,6 +80,7 @@
                 </li>
             </ul>
         </nav>
+        <!-- Sidenav -->
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion" id="sidenavAccordion">
@@ -238,6 +241,7 @@
             </div>
         </div>
         <?php 
+            // Jika parameter isAdmin = 2 maka menandakan user ini terdaftar sebagai Admin dan tombol Admin muncul
             if($currentUser["isAdmin"] != 2) {
                 echo "<script type=\"text/javascript\">
                 document.getElementById(\"admin-link\").style.display = \"none\";

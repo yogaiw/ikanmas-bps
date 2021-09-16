@@ -8,20 +8,22 @@
         exit();
     }
 
-    if(isset($_POST['masuk'])) {
+    if(isset($_POST['masuk'])) { // Jika tombol masuk ditekan
 
         $nip = strtolower(stripslashes($_POST["nip"]));
 		$password = mysqli_real_escape_string($conn, $_POST['password']);
 
+        // Melakuka retrieve tabel pegawai
 		$cek_login = $conn->query("SELECT * FROM pegawai WHERE nip = '$nip'");
 		$ktm_login = $cek_login->num_rows;
 		$data_login = $cek_login->fetch_assoc();
 
+        // Pengecekan kecocokan password dengan database
 		if($ktm_login === 1) {
 			if(password_verify($password,$data_login['password'])){
-				$_SESSION["login"] = true;
-				$_SESSION['current_user'] = $data_login['id_pegawai'];
-				header("Location:dashboard.php");
+				$_SESSION["login"] = true; // Menandakan bahwa session sedang terisi
+				$_SESSION['current_user'] = $data_login['id_pegawai']; // Menyimpan id pegawai ke dalam session
+				header("Location:dashboard.php"); // redirect ke dashboard setelah login berhasil
 				exit;
 			}
 		}
@@ -53,10 +55,6 @@
                 </div>
                 <div class="mb-5"></div>
                 <!-- End of Logo -->
-
-                <div class="alert alert-danger" role="alert">
-                    This is a danger alert—check it out!
-                </div>
 
                 <!-- Form Login -->
                 <form action="" method="POST">
