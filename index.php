@@ -40,26 +40,45 @@
         <link 
             rel="stylesheet"
             href="assets/css/style1.css">
-        <link rel="stylesheet" src="node_modules/fontawesome/css/all.css">
+        <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     </head>
     <body>
         <div class="row">
             <div class="login-form">
+                <!-- Logo -->
                 <div class="d-flex justify-content-center" style="display: block;">
                     <img src="assets/img/logo-bps.png" alt="" width="300px">
                 </div>
                 <div class="mb-5"></div>
+                <!-- End of Logo -->
+
+                <div class="alert alert-danger" role="alert">
+                    This is a danger alert—check it out!
+                </div>
+
+                <!-- Form Login -->
                 <form action="" method="POST">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="nip" aria-describedby="emailHelp" placeholder="NIP" required>
+                    <label class="sr-only" for="inlineFormInputGroupNip">NIP</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-id-card"></i></div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroupNip" name="nip" placeholder="NIP" required>
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+
+                    <label class="sr-only" for="inlineFormInputGroupPassword">Password</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                        </div>
+                        <input type="password" class="form-control" id="inlineFormInputGroupPassword" name="password" placeholder="Password" required>
                     </div>
+
                     <a href="dashboard.php"><button type="submit" name="masuk" class="btn btn-primary btn-block">Masuk</button></a>
                 </form>
+                <!-- End of Form Login -->
             </div>
         </div>
     </body>
