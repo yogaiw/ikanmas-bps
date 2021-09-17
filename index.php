@@ -23,6 +23,7 @@
 			if(password_verify($password,$data_login['password'])){
 				$_SESSION["login"] = true; // Menandakan bahwa session sedang terisi
 				$_SESSION['current_user'] = $data_login['id_pegawai']; // Menyimpan id pegawai ke dalam session
+                $_SESSION['isAdmin'] = $data_login['isAdmin'];
 				header("Location:dashboard.php"); // redirect ke dashboard setelah login berhasil
 				exit;
 			}

@@ -171,9 +171,11 @@
                                                         <td><?= $value['tanggal_keluar']." ".$value['jam_keluar'] ?></td>
                                                         <td><?= $value['tanggal_kembali']." ".$value['jam_kembali'] ?></td>
                                                         <td>
-                                                            <a href="actionacc.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                <button class="btn btn-success btn-sm">ACC</button>
-                                                            </a>
+                                                            <?php if($value['isAccepted'] != 2): ?>
+                                                                <a href="actionacc.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                    <button class="btn btn-success btn-sm">ACC</button>
+                                                                </a>
+                                                            <?php endif; ?>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
