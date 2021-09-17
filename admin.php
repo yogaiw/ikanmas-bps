@@ -170,7 +170,11 @@
                                                         <td><?= $value['keperluan'] ?></td>
                                                         <td><?= $value['tanggal_keluar']." ".$value['jam_keluar'] ?></td>
                                                         <td><?= $value['tanggal_kembali']." ".$value['jam_kembali'] ?></td>
-                                                        <td></td>
+                                                        <td>
+                                                            <a href="actionacc.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                <button class="btn btn-success btn-sm">ACC</button>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

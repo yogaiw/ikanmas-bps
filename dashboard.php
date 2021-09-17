@@ -220,7 +220,15 @@
                                                         <td><?= $value['keperluan'] ?></td>
                                                         <td><?= $value['tanggal_keluar']." ".$value['jam_keluar'] ?></td>
                                                         <td><?= $value['tanggal_kembali']." ".$value['jam_kembali'] ?></td>
-                                                        <td>PENDING</td>
+                                                        <td>
+                                                            <?php 
+                                                                if($value['isAccepted'] == 2) {
+                                                                    echo "<button class='btn btn-primary btn-sm'>PRINT</button>";
+                                                                } else {
+                                                                    echo "<p>PENDING</p>";
+                                                                }
+                                                            ?>
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
