@@ -87,45 +87,6 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4 mb-4">Semua Pegawai</h1>
-                        
-                        <!-- <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="row">
                             <div class="col-xl-12 col-md-12">
                                 <div class="card mb-4">
@@ -163,11 +124,13 @@
                                                         <td>
                                                             <?php if($value['isAdmin'] != 2) { ?>
                                                                 <a href="">
-                                                                    <button class="btn btn-success btn-sm">Jadikan Admin</button>
+                                                                    <div class="text-center">
+                                                                        <button type="button" class="btn btn-success btn-sm btn-">Jadikan Admin</button>
+                                                                    </div>
                                                                 </a>
                                                             <?php } else { ?>
                                                                 <a href="">
-                                                                    <button class="btn btn-danger btn-sm">Cabut Admin</button>
+                                                                    <div class="text-center"><button type="button" class="btn btn-danger btn-sm btn-block">Cabut Admin</button></div>
                                                                 </a>
                                                             <?php } ?>
                                                         </td>
