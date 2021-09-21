@@ -16,10 +16,8 @@
         exit;
     }
 
-    $showAllIzin = $conn->query(
-        "SELECT * FROM izin
-        LEFT JOIN pegawai
-        ON izin.id_pegawai = pegawai.id_pegawai"
+    $showAllPegawai = $conn->query(
+        "SELECT * FROM pegawai"
     );
 
 ?>
@@ -88,7 +86,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4 mb-4">Admin</h1>
+                        <h1 class="mt-4 mb-4">Semua Pegawai</h1>
                         
                         <!-- <div class="row">
                             <div class="col-xl-3 col-md-6">
@@ -133,8 +131,8 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table me-1"></i>
-                                        Daftar Izin Pegawai
-                                        <a href="alluser.php"><button class="btn btn-primary" style="float: right;">Lihat Daftar Pegawai</button></a>
+                                        Daftar Pegawai
+                                        <a href="admin.php"><button class="btn btn-primary" style="float: right;">Lihat Daftar Izin</button></a>
                                     </div>
                                     <div class="card-body">
                                         <table id="datatablesSimple">
@@ -143,9 +141,6 @@
                                                     <th>No.</th>
                                                     <th>NIP</th>
                                                     <th>Nama Pegawai</th>
-                                                    <th>Keperluan</th>
-                                                    <th>Tanggal keluar</th>
-                                                    <th>Tanggal Kembali</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -154,31 +149,27 @@
                                                     <th>No.</th>
                                                     <th>NIP</th>
                                                     <th>Nama Pegawai</th>
-                                                    <th>Keperluan</th>
-                                                    <th>Tanggal keluar</th>
-                                                    <th>Tanggal Kembali</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
                                                 <?php 
                                                     $i = 1;
-                                                    foreach($showAllIzin as $index => $value): ?>
+                                                    foreach($showAllPegawai as $index => $value): ?>
                                                     <tr>
                                                         <td><?=$i++?></td>
                                                         <td><?= $value['nip'] ?></td>
                                                         <td><?= $value['nama_pegawai'] ?></td>
-                                                        <td><?= $value['keperluan'] ?></td>
-                                                        <td><?= $value['tanggal_keluar']." ".$value['jam_keluar'] ?></td>
-                                                        <td><?= $value['tanggal_kembali']." ".$value['jam_kembali'] ?></td>
                                                         <td>
-                                                            <?php if($value['isAccepted'] != 2): ?>
-                                                                <a href="actionacc.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                    <div class="col text-center">
-                                                                        <button class="btn btn-success btn-sm">ACC</button>         
-                                                                    </div>
+                                                            <?php if($value['isAdmin'] != 2) { ?>
+                                                                <a href="">
+                                                                    <button class="btn btn-success btn-sm">Jadikan Admin</button>
                                                                 </a>
-                                                            <?php endif; ?>
+                                                            <?php } else { ?>
+                                                                <a href="">
+                                                                    <button class="btn btn-danger btn-sm">Cabut Admin</button>
+                                                                </a>
+                                                            <?php } ?>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
