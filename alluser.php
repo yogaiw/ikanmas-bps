@@ -52,8 +52,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!">Ubah Password</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
@@ -99,7 +98,7 @@
                                         <table id="datatablesSimple">
                                             <thead>
                                                 <tr>
-                                                    <th>No.</th>
+                                                    <th width="5">No.</th>
                                                     <th>NIP</th>
                                                     <th>Nama Pegawai</th>
                                                     <th>Action</th>
@@ -123,13 +122,13 @@
                                                         <td><?= $value['nama_pegawai'] ?></td>
                                                         <td>
                                                             <?php if($value['isAdmin'] != 2) { ?>
-                                                                <a href="">
+                                                                <a href="actionpromote.php?id_pegawai=<?= $value['id_pegawai'] ?>">
                                                                     <div class="text-center">
                                                                         <button type="button" class="btn btn-success btn-sm btn-">Jadikan Admin</button>
                                                                     </div>
                                                                 </a>
                                                             <?php } else { ?>
-                                                                <a href="">
+                                                                <a href="actiondemote.php?id_pegawai=<?= $value['id_pegawai'] ?>">
                                                                     <div class="text-center"><button type="button" class="btn btn-danger btn-sm btn-block">Cabut Admin</button></div>
                                                                 </a>
                                                             <?php } ?>
