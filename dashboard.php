@@ -184,9 +184,10 @@
                                                         <td>
                                                             <?php 
                                                                 if($value['isAccepted'] == 2) {
-                                                                    echo "<button class='btn btn-primary btn-sm'>PRINT</button>";
+                                                                    echo "
+                                                                        <div class='text-center'><button class='btn btn-primary btn-sm'>PRINT</button></div>";
                                                                 } else {
-                                                                    echo "<button class='btn btn-warning btn-disabled btn-sm'>PENDING</button>";
+                                                                    echo "<div class='text-center'><button class='btn btn-warning btn-disabled btn-sm'>PENDING</button></div>";
                                                                 }
                                                             ?>
                                                         </td>

@@ -173,7 +173,9 @@
                                                         <td>
                                                             <?php if($value['isAccepted'] != 2): ?>
                                                                 <a href="actionacc.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                    <button class="btn btn-success btn-sm">ACC</button>
+                                                                    <div class="col text-center">
+                                                                        <button class="btn btn-success btn-sm">ACC</button>         
+                                                                    </div>
                                                                 </a>
                                                             <?php endif; ?>
                                                         </td>
