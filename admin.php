@@ -138,6 +138,11 @@
                                                                         <button class="btn btn-success btn-sm">ACC</button>         
                                                                     </div>
                                                                 </a>
+                                                                <a href="actions/hapusizin.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                    <div class="col text-center">
+                                                                        <button class="btn btn-danger btn-sm">HAPUS</button>         
+                                                                    </div>
+                                                                </a>
                                                             <?php endif; ?>
                                                         </td>
                                                     </tr>
