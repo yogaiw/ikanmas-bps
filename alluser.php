@@ -121,7 +121,9 @@
                                                         <td><?= $value['nip'] ?></td>
                                                         <td><?= $value['nama_pegawai'] ?></td>
                                                         <td>
-                                                            <?php if($value['isAdmin'] != 2) { ?>
+                                                            <?php if($_SESSION['current_user'] == $value['id_pegawai']) { ?>
+                                                                <p>&nbsp;</p>
+                                                            <?php } else if($value['isAdmin'] != 2) { ?>
                                                                 <a href="actions/actionpromote.php?id_pegawai=<?= $value['id_pegawai'] ?>">
                                                                     <div class="text-center">
                                                                         <button type="button" class="btn btn-success btn-sm btn-">Jadikan Admin</button>
