@@ -181,14 +181,21 @@
                                                         <td><?= date("d-m-Y", strtotime($value['tanggal_keluar']))." pukul ".$value['jam_keluar'] ?></td>
                                                         <td><?= date("d-m-Y", strtotime($value['tanggal_kembali']))." pukul ".$value['jam_kembali'] ?></td>
                                                         <td>
-                                                            <?php 
-                                                                if($value['isAccepted'] == 2) {
-                                                                    echo "
-                                                                        <div class='text-center'><button class='btn btn-primary btn-sm'><i class='fas fa-file'></i></button></div>";
-                                                                } else {
-                                                                    echo "<div class='text-center'><button class='btn btn-warning btn-disabled btn-sm'>PENDING</button></div>";
-                                                                }
-                                                            ?>
+                                                            <?php if($value['isAccepted'] == 2) { ?>
+                                                                    <div class='text-center'>
+                                                                        <button class='btn btn-primary btn-sm'><i class='fas fa-file'></i></button>
+                                                                        <a href="actions/hapusizinsaya.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                                        </a>
+                                                                    </div>
+                                                            <?php } else { ?>
+                                                                    <div class='text-center'>
+                                                                        <button class='btn btn-warning btn-sm' disabled><i class="fas fa-clock"></i></button>
+                                                                        <a href="actions/hapusizinsaya.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                                        </a>
+                                                                    </div>";
+                                                            <?php } ?>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
