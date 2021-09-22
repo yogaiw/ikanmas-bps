@@ -133,7 +133,7 @@
                                                         <td><?= date("d-m-Y", strtotime($value['tanggal_kembali']))." pukul ".$value['jam_kembali'] ?></td>
                                                         <td>
                                                             <?php if($value['isAccepted'] != 2): ?>
-                                                                <a href="actionacc.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                <a href="actions/actionacc.php?id_izin=<?= $value['id_izin'] ?>">
                                                                     <div class="col text-center">
                                                                         <button class="btn btn-success btn-sm">ACC</button>         
                                                                     </div>

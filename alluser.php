@@ -122,13 +122,13 @@
                                                         <td><?= $value['nama_pegawai'] ?></td>
                                                         <td>
                                                             <?php if($value['isAdmin'] != 2) { ?>
-                                                                <a href="actionpromote.php?id_pegawai=<?= $value['id_pegawai'] ?>">
+                                                                <a href="actions/actionpromote.php?id_pegawai=<?= $value['id_pegawai'] ?>">
                                                                     <div class="text-center">
                                                                         <button type="button" class="btn btn-success btn-sm btn-">Jadikan Admin</button>
                                                                     </div>
                                                                 </a>
                                                             <?php } else { ?>
-                                                                <a href="actiondemote.php?id_pegawai=<?= $value['id_pegawai'] ?>">
+                                                                <a href="actions/actiondemote.php?id_pegawai=<?= $value['id_pegawai'] ?>">
                                                                     <div class="text-center"><button type="button" class="btn btn-danger btn-sm btn-block">Cabut Admin</button></div>
                                                                 </a>
                                                             <?php } ?>
