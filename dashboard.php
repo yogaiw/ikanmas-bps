@@ -60,7 +60,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html"><img src="assets/img/logo-bps.png" width="170px" alt=""></a>
+            <a class="navbar-brand ps-3" href="dashboard.php"><img src="assets/img/logo-bps.png" width="170px" alt=""></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -183,7 +183,9 @@
                                                         <td>
                                                             <?php if($value['isAccepted'] == 2) { ?>
                                                                     <div class='text-center'>
-                                                                        <button class='btn btn-primary btn-sm'><i class='fas fa-file'></i></button>
+                                                                        <a href="cetak.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                            <button class='btn btn-primary btn-sm'><i class='fas fa-file'></i></button>
+                                                                        </a>
                                                                         <a href="actions/hapusizinsaya.php?id_izin=<?= $value['id_izin'] ?>">
                                                                             <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                                                                         </a>
@@ -194,7 +196,7 @@
                                                                         <a href="actions/hapusizinsaya.php?id_izin=<?= $value['id_izin'] ?>">
                                                                             <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                                                                         </a>
-                                                                    </div>";
+                                                                    </div>
                                                             <?php } ?>
                                                         </td>
                                                     </tr>
