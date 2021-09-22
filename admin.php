@@ -33,10 +33,16 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>BPS Kab. Banyumas</title>
+
+        <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        
+        <!-- CSS -->
         <link href="assets/css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     </head>
 
     <body class="sb-nav-fixed">
@@ -54,7 +60,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Ubah Password</a></li>
+                        <li><a class="dropdown-item" href="changepass.php">Ubah Password</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
@@ -132,18 +138,22 @@
                                                         <td><?= date("d-m-Y", strtotime($value['tanggal_keluar']))." pukul ".$value['jam_keluar'] ?></td>
                                                         <td><?= date("d-m-Y", strtotime($value['tanggal_kembali']))." pukul ".$value['jam_kembali'] ?></td>
                                                         <td>
-                                                            <?php if($value['isAccepted'] != 2): ?>
-                                                                <a href="actions/actionacc.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                    <div class="col text-center">
-                                                                        <button class="btn btn-success btn-sm">ACC</button>         
-                                                                    </div>
-                                                                </a>
-                                                                <a href="actions/hapusizin.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                    <div class="col text-center">
-                                                                        <button class="btn btn-danger btn-sm">HAPUS</button>         
-                                                                    </div>
-                                                                </a>
-                                                            <?php endif; ?>
+                                                            <?php if($value['isAccepted'] != 2){ ?>
+                                                                <div class="text-center">
+                                                                    <a href="actions/actionacc.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                            <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button>         
+                                                                    </a>
+                                                                    <a href="actions/hapusizin.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                                    </a>
+                                                                </div>
+                                                            <?php } else { ?>
+                                                                <div class="text-center">
+                                                                    <a href="actions/hapusizin.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                                    </a>
+                                                                </div>
+                                                            <?php } ?>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

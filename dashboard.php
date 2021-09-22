@@ -184,7 +184,7 @@
                                                             <?php 
                                                                 if($value['isAccepted'] == 2) {
                                                                     echo "
-                                                                        <div class='text-center'><button class='btn btn-primary btn-sm'>PRINT</button></div>";
+                                                                        <div class='text-center'><button class='btn btn-primary btn-sm'><i class='fas fa-file'></i></button></div>";
                                                                 } else {
                                                                     echo "<div class='text-center'><button class='btn btn-warning btn-disabled btn-sm'>PENDING</button></div>";
                                                                 }
