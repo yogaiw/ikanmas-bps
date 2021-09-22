@@ -129,8 +129,8 @@
                                                         <td><?= $value['nip'] ?></td>
                                                         <td><?= $value['nama_pegawai'] ?></td>
                                                         <td><?= $value['keperluan'] ?></td>
-                                                        <td><?= $value['tanggal_keluar']." ".$value['jam_keluar'] ?></td>
-                                                        <td><?= $value['tanggal_kembali']." ".$value['jam_kembali'] ?></td>
+                                                        <td><?= date("d-m-Y", strtotime($value['tanggal_keluar']))." pukul ".$value['jam_keluar'] ?></td>
+                                                        <td><?= date("d-m-Y", strtotime($value['tanggal_kembali']))." pukul ".$value['jam_kembali'] ?></td>
                                                         <td>
                                                             <?php if($value['isAccepted'] != 2): ?>
                                                                 <a href="actionacc.php?id_izin=<?= $value['id_izin'] ?>">
