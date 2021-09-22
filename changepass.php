@@ -1,3 +1,39 @@
+<?php 
+    session_start();
+    require "koneksi.php";
+
+    if(!isset($_SESSION["login"])) { // Jika user belum login maka tidak bisa mengakses halaman ini
+        header("Location:index.php");
+        exit();
+    }
+
+    $getCurrentUser = $conn->query("SELECT * FROM pegawai WHERE id_pegawai = ".$_SESSION['current_user']);
+    $currentUser = $getCurrentUser->fetch_assoc();
+
+
+    if(isset($_POST['change'])) {
+
+        $oldPassword = mysqli_real_escape_string($conn, $_POST['old_password']);
+        $newPassword = mysqli_real_escape_string($conn, $_POST['new_password']);
+        $verifyPassword = mysqli_real_escape_string($conn, $_POST['verify_password']);
+        $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        if(password_verify($oldPassword, $currentUser['password'])) {
+            if($newPassword == $verifyPassword) {
+                $qChangePass = "UPDATE pegawai SET password = '$hashedNewPassword' WHERE id_pegawai = ".$currentUser['id_pegawai'];
+                $conn->query($qChangePass);
+                echo "<div align='center' class='alert alert-success'> Password berhasil diubah <a href='dashboard.php'><button class='btn btn-sm btn-success'>Kembali ke halaman utama</button></a> </div>";
+                $conn->close();
+            }
+            else {
+                echo "<div align='center' class='alert alert-danger'> Password baru tidak sama! </div>";
+            }
+        }
+        else {
+            echo "<div align='center' class='alert alert-danger'> Password Lama salah </div>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,22 +58,23 @@
                 <h3 class="mb-0 text-center">Ubah Password</h3>
             </div>
             <div class="card-body">
-                <form class="form" role="form" autocomplete="off">
+                <p>Ubah Password untuk <b><?= $currentUser['nama_pegawai'] ?></b></p>
+                <form action="" method="POST" class="form" role="form" autocomplete="off">
                     <div class="form-group">
                         <label for="inputPasswordOld">Password Sekarang</label>
-                        <input type="password" class="form-control" id="inputPasswordOld" placeholder="Masukkan Password Lama" required="">
+                        <input type="password" class="form-control" id="inputPasswordOld" name="old_password" placeholder="Masukkan Password Lama" required>
                     </div>
                     <div class="form-group">
                         <label for="inputPasswordNew">Password Baru</label>
-                        <input type="password" class="form-control" id="inputPasswordNew" placeholder="Masukkan Password Baru" required="">
+                        <input type="password" class="form-control" id="inputPasswordNew" name="new_password" placeholder="Masukkan Password Baru" required>
                         
                     </div>
                     <div class="form-group">
                         <label for="inputPasswordNewVerify">Ulang Password Baru</label>
-                        <input type="password" class="form-control" id="inputPasswordNewVerify" placeholder="Ketik Ulang Password Baru" required="">
+                        <input type="password" class="form-control" id="inputPasswordNewVerify" name="verify_password" placeholder="Ketik Ulang Password Baru" required>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg btn-block">Simpan</button>
+                        <a href=""><button name="change" type="submit" class="btn btn-success btn-lg btn-block">Simpan</button></a>
                     </div>
                     <a href="dashboard.php">
                         <div class="form-group">
