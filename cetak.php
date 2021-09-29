@@ -6,6 +6,11 @@
 
     $query = "SELECT * FROM izin LEFT JOIN pegawai ON izin.id_pegawai = pegawai.id_pegawai WHERE id_izin = '$idIzin'";
     $izinDetail = $conn->query($query)->fetch_assoc();
+
+    if($izinDetail['id_pegawai'] != $_SESSION['current_user'] || $izinDetail['isAccepted'] != 2) {
+        header("Location: dashboard.php");
+        exit;
+    }
 ?>
 <html>
     <head>
