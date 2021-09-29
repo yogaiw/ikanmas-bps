@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2021 at 09:25 AM
+-- Generation Time: Sep 29, 2021 at 08:32 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -38,13 +38,6 @@ CREATE TABLE `izin` (
   `keperluan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `izin`
---
-
-INSERT INTO `izin` (`id_izin`, `id_pegawai`, `tanggal_keluar`, `jam_keluar`, `tanggal_kembali`, `jam_kembali`, `isAccepted`, `keperluan`) VALUES
-(7, 2, '2021-09-15', '13:02', '2021-09-15', '14:00', 1, 'Uwowowowowo');
-
 -- --------------------------------------------------------
 
 --
@@ -64,8 +57,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nip`, `password`, `nama_pegawai`, `isAdmin`) VALUES
-(1, '18102180', '$2y$10$uRn1ooximjdBDxaMxAKya.kV2uXx/FMnQQGX2QS06Em8wmW103NPS', 'Yoga Indra Wijaya', 1),
-(2, '18102168', '$2y$10$EDzNnfk1aLM2XCa4Zg64VO9YOSQvirORt9xsQIWBAxtM4ztP.QjOW', 'Humam Zaky', 2);
+(11, 'admin', '$2y$10$bdSsbyazrjT54qVAmvTigeMI53MkiS/CLorG7jkuWE7EMiX28Bbve', 'Developer test', 2);
 
 --
 -- Indexes for dumped tables
@@ -91,13 +83,13 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `izin`
 --
 ALTER TABLE `izin`
-  MODIFY `id_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
