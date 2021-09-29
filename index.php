@@ -34,51 +34,52 @@
 
 <html>
     <head>
+
         <title>BPS Kabupaten Banyumas</title>
-        <link 
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
-            crossorigin="anonymous">
-        <link 
-            rel="stylesheet"
-            href="assets/css/style1.css">
+
+        <!-- Bootstrap v5 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="assets/css/style1.css">
+
+        <!-- Fontawesome -->
         <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+        
     </head>
     <body>
-        <div class="row">
-            <div class="login-form">
-                <!-- Logo -->
-                <div class="d-flex justify-content-center" style="display: block;">
-                    <img src="assets/img/logo-bps.png" alt="" width="300px">
-                </div>
-                <div class="mb-5"></div>
-                <!-- End of Logo -->
+        <div class="container">
+            <div class="row vh-100 justify-content-center align-items-center">
+                <div class="col-sm-8 col-md-6 col-lg-4 bg-white rounded p-4 shadow">
+                        <!-- Logo -->
+                    <div class="d-flex justify-content-center" style="display: block;">
+                            <img src="assets/img/logo-bps.png" alt="" width="300px">
+                    </div>
+                    <div class="mb-5"></div>
+                        <!-- End of Logo -->
 
-                <!-- Form Login -->
+                        <!-- Form Login -->
                 <form action="" method="POST">
-                    <label class="sr-only" for="inlineFormInputGroupNip">NIP</label>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="fas fa-id-card"></i></div>
-                        </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroupNip" name="nip" placeholder="NIP" required>
+                        <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        <input type="text" class="form-control" placeholder="NIP" aria-label="NIP"  name="nip" required>
                     </div>
 
-                    <label class="sr-only" for="inlineFormInputGroupPassword">Password</label>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="fas fa-lock"></i></div>
-                        </div>
-                        <input type="password" class="form-control" id="inlineFormInputGroupPassword" name="password" placeholder="Password" required>
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" placeholder="Password" aria-label="Password"  name="password" required>
                     </div>
 
-                    <a href="dashboard.php"><button type="submit" name="masuk" class="btn btn-primary btn-block">Masuk</button></a>
+                    <a href="dashboard.php">
+                        <div class="d-grid gap-2">
+                            <button type="submit" name="masuk" class="btn btn-primary">Masuk</button>
+                        </div>
+                    </a>
                 </form>
                 <!-- End of Form Login -->
+                </div>
             </div>
+
         </div>
     </body>
 </html>
