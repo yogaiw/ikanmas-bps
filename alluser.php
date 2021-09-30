@@ -119,7 +119,12 @@
                                                     <tr>
                                                         <td><?=$i++?></td>
                                                         <td><?= $value['nip'] ?></td>
-                                                        <td><?= $value['nama_pegawai'] ?></td>
+                                                        <td>
+                                                            <div class="d-inline">
+                                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#pegawaiModal<?=$value['id_pegawai']?>"><i class="fas fa-user"></i></button>         
+                                                            </div> &nbsp;
+                                                            <?= $value['nama_pegawai'] ?>
+                                                        </td>
                                                         <td>
                                                             <?php if($_SESSION['current_user'] == $value['id_pegawai']) { ?>
                                                                 <p>&nbsp;</p>
@@ -136,6 +141,30 @@
                                                             <?php } ?>
                                                         </td>
                                                     </tr>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="pegawaiModal<?=$value['id_pegawai']?>" data-backdrop="static" tabindex="-1" aria-labelledby="pegawaiModalLabel" aria-hidden="true">
+                                                        <?php
+                                                            $modalId = $value['id_pegawai'];
+                                                            $modalShowData = $conn->query("SELECT * FROM pegawai WHERE id_pegawai = ".$modalId)->fetch_assoc();
+                                                        ?>
+                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <?= $modalShowData['nama_pegawai'] ?>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>
@@ -168,5 +197,6 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="assets/js/datatables-simple-demo.js"></script>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>
