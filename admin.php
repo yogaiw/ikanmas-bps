@@ -141,10 +141,10 @@
                                                             <?php if($value['isAccepted'] != 2){ ?>
                                                                 <div class="text-center">
                                                                     <a href="actions/actionacc.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                            <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button>         
+                                                                            <button type="button" class="btn btn-success btn-sm mt-1 mb-1"><i class="fas fa-check"></i></button>         
                                                                     </a>
                                                                     <a href="actions/hapusizin.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                                            <button type="button" class="btn btn-danger btn-sm mt-1 mb-1"><i class="fas fa-trash-alt"></i></button>
                                                                     </a>
                                                                 </div>
                                                             <?php } else { ?>

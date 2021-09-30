@@ -121,26 +121,26 @@
                                             <div class="form-group mb-3">
                                                 <input type="text" class="form-control"  placeholder="<?= $currentUser['nama_pegawai'] ?>" disabled>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-3">
                                                     <input type="text" name="tglKeluar" class="form-control" onfocus="(this.type='date')" id="date" placeholder="Tanggal Keluar" required>
                                                 </div>
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 mb-3">
                                                     <input type="text" name="tglKembali" class="form-control" onfocus="(this.type='date')" id="date" placeholder="Tanggal Kembali" required>
                                                 </div>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-3">
                                                     <input type="text" name="jamKeluar" class="form-control" onfocus="(this.type='time')" placeholder="Jam Keluar">
                                                 </div>
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 mb-3">
                                                     <input type="text" name="jamKembali" class="form-control" onfocus="(this.type='time')" placeholder="Jam Kembali">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-3">
                                                     <textarea class="form-control" name="keperluan" placeholder="Keperluan" rows="5" required></textarea>
                                             </div>
-                                            <a href="dashboard.php"><button type="submit" name="kirim" class="btn btn-primary d-flex">Kirim</button></a>
+                                            <a href="dashboard.php"><button type="submit" name="kirim" class="btn btn-primary d-flex fa-pull-right">Kirim</button></a>
                                         </form>
                                     </div>
                                 </div>
@@ -184,17 +184,17 @@
                                                             <?php if($value['isAccepted'] == 2) { ?>
                                                                     <div class='text-center'>
                                                                         <a href="cetak.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                            <button class='btn btn-primary btn-sm'><i class='fas fa-file'></i></button>
+                                                                            <button type="button" class="btn btn-primary btn-sm mt-1 mb-1"><i class="fas fa-print"></i></button>
                                                                         </a>
                                                                         <a href="actions/hapusizinsaya.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                                            <button type="button" class="btn btn-danger btn-sm mt-1 mb-1"><i class="fas fa-trash-alt"></i></button>
                                                                         </a>
                                                                     </div>
                                                             <?php } else { ?>
                                                                     <div class='text-center'>
-                                                                        <button class='btn btn-warning btn-sm' disabled><i class="fas fa-clock"></i></button>
+                                                                        <button class='btn btn-warning btn-sm mt-1 mb-1' disabled><i class="fas fa-clock"></i></button>
                                                                         <a href="actions/hapusizinsaya.php?id_izin=<?= $value['id_izin'] ?>">
-                                                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                                            <button type="button" class="btn btn-danger btn-sm mt-1 mb-1"><i class="fas fa-trash-alt"></i></button>
                                                                         </a>
                                                                     </div>
                                                             <?php } ?>
