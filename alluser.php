@@ -120,9 +120,6 @@
                                                         <td><?=$i++?></td>
                                                         <td><?= $value['nip'] ?></td>
                                                         <td>
-                                                            <div class="d-inline">
-                                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#pegawaiModal<?=$value['id_pegawai']?>"><i class="fas fa-user"></i></button>         
-                                                            </div> &nbsp;
                                                             <?= $value['nama_pegawai'] ?>
                                                         </td>
                                                         <td>
@@ -141,30 +138,6 @@
                                                             <?php } ?>
                                                         </td>
                                                     </tr>
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="pegawaiModal<?=$value['id_pegawai']?>" data-backdrop="static" tabindex="-1" aria-labelledby="pegawaiModalLabel" aria-hidden="true">
-                                                        <?php
-                                                            $modalId = $value['id_pegawai'];
-                                                            $modalShowData = $conn->query("SELECT * FROM pegawai WHERE id_pegawai = ".$modalId)->fetch_assoc();
-                                                        ?>
-                                                        <div class="modal-dialog modal-dialog-scrollable">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <?= $modalShowData['nama_pegawai'] ?>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>
