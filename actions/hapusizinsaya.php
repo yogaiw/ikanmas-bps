@@ -14,5 +14,3 @@
         $conn->close();
         header("Location:../dashboard.php");
     }
-
-?>

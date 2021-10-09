@@ -13,5 +13,3 @@
         $conn->close();
         header("Location:../admin.php");
     }
-
-?>
