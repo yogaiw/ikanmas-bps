@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require 'koneksi.php';
+    require '../koneksi.php';
 
     $idIzin = $_GET['id_izin'];
 
@@ -270,12 +270,12 @@
     </head>
     <body class="c3">
         <p class="c13">
-            <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 378.15px; height: 69.38px;"><img alt="" src="assets/img/logo-bps.png" style="width: 378.15px; height: 69.38px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+            <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 378.15px; height: 69.38px;"><img alt="" src="../assets/img/logo-bps.png" style="width: 378.15px; height: 69.38px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
             </span>
         </p>
         <p class="c13"><span class="c4 c14">KARTU IZIN KELUAR</span>
         </p>
-        <p class="c13"><span class="c4 c15">(PROTOTYPE)</span></p><p class="c11"><span class="c0"></span></p><p class="c11"><span class="c0"></span></p><a id="t.88078215e7c6d2d12c2632f6a884153e77b596e5"></a><a id="t.0"></a><table class="c8"><tbody><tr class="c5"><td class="c7" colspan="1" rowspan="1"><p class="c2"><span class="c0">NIP</span></p><p class="c2"><span class="c1">ID</span></p></td><td class="c7" colspan="1" rowspan="1"><p class="c2"><span class="c0">NAMA</span></p><p class="c2"><span class="c1">Name</span></p></td></tr><tr class="c5"><td class="c7" colspan="1" rowspan="1"><p class="c2"><span class="c6">
+        <p class="c13"><span class="c4 c15"></span></p><p class="c11"><span class="c0"></span></p><p class="c11"><span class="c0"></span></p><a id="t.88078215e7c6d2d12c2632f6a884153e77b596e5"></a><a id="t.0"></a><table class="c8"><tbody><tr class="c5"><td class="c7" colspan="1" rowspan="1"><p class="c2"><span class="c0">NIP</span></p><p class="c2"><span class="c1">ID</span></p></td><td class="c7" colspan="1" rowspan="1"><p class="c2"><span class="c0">NAMA</span></p><p class="c2"><span class="c1">Name</span></p></td></tr><tr class="c5"><td class="c7" colspan="1" rowspan="1"><p class="c2"><span class="c6">
         <?= $izinDetail['nip'] ?>
     </span></p></td><td class="c7" colspan="1" rowspan="1"><p class="c2"><span>
         <?= $izinDetail['nama_pegawai'] ?>
