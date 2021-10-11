@@ -1,7 +1,9 @@
 <?php 
 
     session_start();
-    require "koneksi.php";
+    require 'koneksi.php';
+    include_once 'classes/User.php';
+    $pegawai = new User;
 
     if(!isset($_SESSION["login"])) { // Jika user belum login maka tidak bisa mengakses halaman ini
         header("Location:index.php");
@@ -18,28 +20,12 @@
         $jamKeluar = $_POST['jamKeluar'];
         $jamKembali = $_POST['jamKembali'];
         $keperluan = $_POST['keperluan'];
-        $dibuat = $currentUser['id_pegawai'];
+        $createdBy = $currentUser['id_pegawai'];
 
-        $qKirimIzin = "
-            INSERT INTO izin
-            VALUES (
-                '',
-                '$dibuat',
-                '$tglKeluar',
-                '$jamKeluar',
-                '$tglKembali',
-                '$jamKembali',
-                1,
-                '$keperluan'
-            );
-        ";
-
-        $conn->query($qKirimIzin);
+        $pegawai->setIzinSaya($tglKeluar, $tglKembali, $jamKeluar, $jamKembalim, $keperluan, $createdBy);
     }
 
-    // Proses menampilkan daftar izin dari user yang sedang login
-    $qShowIzinSaya = "SELECT * FROM izin WHERE id_pegawai = ".$_SESSION['current_user'];
-    $showIzinSaya = $conn->query($qShowIzinSaya);
+    $showIzinSaya = $pegawai->getIzinSaya();
 ?>
 
 <!DOCTYPE html>
@@ -183,7 +169,7 @@
                                                         <td>
                                                             <?php if($value['isAccepted'] == 2) { ?>
                                                                     <div class='text-center'>
-                                                                        <a href="cetak.php?id_izin=<?= $value['id_izin'] ?>">
+                                                                        <a href="actions/cetak.php?id_izin=<?= $value['id_izin'] ?>">
                                                                             <button type="button" class="btn btn-primary btn-sm mt-1 mb-1"><i class="fas fa-print"></i></button>
                                                                         </a>
                                                                         <a href="actions/hapusizinsaya.php?id_izin=<?= $value['id_izin'] ?>">
