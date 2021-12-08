@@ -22,7 +22,7 @@
         $keperluan = $_POST['keperluan'];
         $createdBy = $currentUser['id_pegawai'];
 
-        $pegawai->setIzinSaya($tglKeluar, $tglKembali, $jamKeluar, $jamKembalim, $keperluan, $createdBy);
+        $pegawai->setIzinSaya($tglKeluar, $tglKembali, $jamKeluar, $jamKembali, $keperluan, $createdBy);
     }
 
     $showIzinSaya = $pegawai->getIzinSaya();
